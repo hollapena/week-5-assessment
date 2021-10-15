@@ -62,8 +62,15 @@ body{
     grid-area:needpush;
     color: #FEF9E7;
     display:grid;
-    grid-template-areas: "grat comp fort cure";
+    grid-template-areas: "grat bored comp cure fort";
     grid-gap: 20px;
+}
+
+#cureForBoredom{
+    grid-area:bored;
+    height:150px;
+    width:150px;
+    border-radius:50%;
 }
 
 #gratitudeReminder{

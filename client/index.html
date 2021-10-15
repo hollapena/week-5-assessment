@@ -36,7 +36,7 @@
       <button id="complimentButton">Get a compliment</button>
       <button id="fortuneButton">Get a fortune</button>
       <button id="cureForStress">Click Here to Cure Your Stress</button>
-      <!-- Bored, Learn Something New -->
+      <button id="cureForBoredom">Click Here to Cure Your Boredom</button>
     </section>
 
     <section id="evening">
@@ -73,6 +73,21 @@
             price
           }
           alert(`${relaxation.activity}, it takes ${relaxation.participants} participant(s), and costs about $${relaxation.price * 10}`);
+        });
+      };
+
+      document.getElementById("cureForBoredom").onclick = function () {
+        axios.get("http://www.boredapi.com/api/activity")
+        .then (function(response) {
+          const{activity, accessibility, type, participants, price} = response.data;
+          const task = {
+            activity, 
+            accessibility, 
+            type, 
+            participants, 
+            price
+          }
+          alert(`${task.activity}, it takes ${task.participants} participant(s), and costs about $${task.price * 10}`);
         });
       };
 
