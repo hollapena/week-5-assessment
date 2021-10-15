@@ -1,0 +1,26 @@
+body{
+    background-image: linear-gradient(#FEF9E7 , #1A5276 );
+    background-repeat: no-repeat;
+    height:100vh;
+    display:grid;
+    justify-items:center;
+}
+
+#morning{
+    display:grid;
+    justify-items:center;
+}
+
+#gratitudeText{
+    width: 300px;
+}
+
+#midday{
+    display:grid;
+    justify-items:center;
+}
+
+#needAPush{
+    color: #FEF9E7;
+    display:grid;
+}
