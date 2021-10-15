@@ -1,26 +1,105 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap');
+
+
 body{
     background-image: linear-gradient(#FEF9E7 , #1A5276 );
     background-repeat: no-repeat;
-    height:100vh;
+    height:125vh;
     display:grid;
     justify-items:center;
+    grid-template-areas:
+    "heading"
+    "morning"
+    "midday"
+    "needpush"
+    "evening";
+}
+#header{
+    grid-area:heading;
+    text-align:center;
+}
+
+#heading{
+    font-family:Lora;
+    font-size:100px;
+
 }
 
 #morning{
+    grid-area:morning;
     display:grid;
+    grid-template-areas: 
+    "thanks thanks"
+    "grat grat"
+    "text button";
     justify-items:center;
 }
 
+#thanks{
+    grid-area:thanks;
+    align-self:end;
+}
+#grat{
+    grid-area:grat;
+    align-self:start;
+}
 #gratitudeText{
+    grid-area:text;
     width: 300px;
+}
+#gratitudeButton{
+    grid-area:button;
 }
 
 #midday{
+    grid-area:midday;
     display:grid;
     justify-items:center;
 }
 
 #needAPush{
+    grid-area:needpush;
     color: #FEF9E7;
     display:grid;
+    grid-template-areas: "grat comp fort cure";
+    grid-gap: 20px;
 }
+
+#gratitudeReminder{
+    grid-area:grat;
+    height:150px;
+    width:150px;
+    border-radius:50%;
+}
+
+#complimentButton{
+    grid-area:comp;
+    height:150px;
+    width:150px;
+    border-radius:50%;
+}
+
+#fortuneButton{
+    grid-area:fort;
+    height:150px;
+    width:150px;
+    border-radius:50%;
+}
+
+#cureForStress{
+    grid-area:cure;
+    height:150px;
+    width:150px;
+    border-radius:50%;
+}
+
+button{
+    background-color:darkgrey;
+    color:rgb(221, 220, 220);
+    font-family:Lora;
+    font-size:20px;
+    border:none;
+    box-shadow:3px 3px 3px rgb(96, 96, 96);
+}
+
