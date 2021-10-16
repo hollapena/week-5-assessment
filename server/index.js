@@ -47,4 +47,24 @@ app.get("/api/gratitude", (req, res) => {
   res.status(200).send(randomGratitude)
 });
 
+globalID=0
+const toDoList = []
+
+app.post("/api/todo", (req, res) => {
+  const{toDoText, descriptionText}=req.body
+  let task = [globalID, toDoText, descriptionText]
+  toDoList.push(task);
+  globalID++
+  console.log(toDoList);
+  res.status(200).send(toDoList);
+});
+
+app.delete("/api/todo/:id", (req,res) => {
+  const {id}=req.params
+  let index = toDoList.findIndex((elem) => +elem[0] === +id)
+    toDoList.splice(index, 1);
+    console.log(toDoList);
+    res.status(200).send(toDoList);
+});
+
 app.listen(4000, () => console.log("Server running on 4000"));

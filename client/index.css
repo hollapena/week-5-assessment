@@ -5,7 +5,7 @@
 body{
     background-image: linear-gradient(#FEF9E7 , #1A5276 );
     background-repeat: no-repeat;
-    height:125vh;
+    background-size:cover;
     display:grid;
     justify-items:center;
     grid-template-areas:
@@ -56,8 +56,46 @@ body{
     grid-area:midday;
     display:grid;
     justify-items:center;
+    background-color:rgba(169, 169, 169, 0.4);
+    border-radius: 20px;
+    margin-bottom: 50px;
+    margin-top:50px;
+}
+.task-style{
+    width:300px;
+    display:grid;
+    grid-template-areas:
+    "delete task notes";
+    justify-items:start;
+    align-items:center;
+    margin-right:75px;
 }
 
+.task{
+    grid-area:task;
+    width:175px;
+}
+.notes{
+    grid-area:notes;
+    width:165px;
+}
+.deleteButton{
+    grid-area:delete;
+    height: 30px;
+    width:25px;
+    margin-right:20px;
+
+}
+#todotitle{
+    background-color:rgb(175, 175, 175);
+    height:40px;
+    width:500px;
+    margin:0;
+    text-align:center;
+    border-top-right-radius:20px;
+    border-top-left-radius:20px;
+    padding-top:10px;
+}
 #needAPush{
     grid-area:needpush;
     color: #FEF9E7;

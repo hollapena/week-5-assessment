@@ -21,15 +21,16 @@
 <br>
 <br>
 
-    <!-- <section id="midday">
-      <h2>Today's To Do List</h2>
-      <h3>Keep your tasks organized</h3>
-      <input type="text" placeholder="Enter a Task"/>
-      <button type="submit">Submit Your Task</button>
-      <ul id="toDoList">
+    <section id="midday">
+      <h2 class="todolist" id="todotitle">Today's To Do List</h2>
+      <h3 class="todolist" id="todosub">Keep your tasks organized</h3>
+      <input id="todotext" class="todolist" type="text" placeholder="Enter a Task"/>
+      <input id="descriptionText" class="todolist" type="text-area" placeholder="Description or Notes about Task"/>
+      <button id="todobutton" class="todolist" type="submit">Submit Task</button>
+      <ul class="todolist" id="displayedList">
 
       </ul>
-    </section> -->
+    </section>
 
     <section id="needAPush">
       <button id="gratitudeReminder">Gratitude Reminder</button>
@@ -104,6 +105,44 @@
         .then (function (response) {
           alert(response.data);
         });
+      };
+
+      document.getElementById("todobutton").onclick = function () {
+        let toDoText=document.getElementById("todotext").value;
+        let descriptionText=document.getElementById("descriptionText").value;
+        let newItem = {
+          toDoText,
+          descriptionText
+        };
+        document.getElementById('todotext').value=''
+        document.getElementById('descriptionText').value=''
+        console.log(newItem);
+        axios.post("http://localhost:4000/api/todo/", newItem)
+        .then (function (response) {
+          createToDoItem(response.data);
+        });
+      };
+
+      function createToDoItem(res){
+        document.getElementById('displayedList').innerHTML= '';
+        // newTask.innerHTML=''
+        let toDoList = res
+        for(let i = 0; i<toDoList.length; i++){
+          const id=toDoList[i][0]
+          const item=toDoList[i][1]
+          const description=toDoList[i][2]
+          let newTask=document.createElement('div')
+          newTask.classList.add('task-style')
+          newTask.innerHTML=`<button onclick="deleteItem(${id})" class="deleteButton">X</button><h2 class="task">${item}</h2><p class="notes">${description}</p>`;
+          document.getElementById('displayedList').append(newTask);
+        }
+      };
+      function deleteItem (id) {
+        axios.delete(`http://localhost:4000/api/todo/${id}`)
+        .then(res => {
+          alert("Congratulations on Finishing your Task!")
+          createToDoItem(res.data);
+        })
       };
 
       document.getElementById("gratitudeReminder").onclick = function  () {
