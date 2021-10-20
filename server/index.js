@@ -67,4 +67,14 @@ app.delete("/api/todo/:id", (req,res) => {
     res.status(200).send(toDoList);
 });
 
+app.put("/api/todo/:id", (req, res) => {
+  console.log(req.body)
+  const {id} = req.params
+  const {data} = req.body
+  let index = toDoList.findIndex((elem) => +elem[0] === +id)
+    toDoList[index].splice(2, 1, data)
+    console.log(toDoList)
+    res.status(200).send(toDoList)
+});
+
 app.listen(4000, () => console.log("Server running on 4000"));

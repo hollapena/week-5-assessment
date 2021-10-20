@@ -23,7 +23,7 @@
 
     <section id="midday">
       <h2 class="todolist" id="todotitle">Today's To Do List</h2>
-      <h3 class="todolist" id="todosub">Keep your tasks organized</h3>
+      <h3 class="todolist" id="todosub">Use this to keep your tasks organized <hr> To update a task's description, <br> type a new description in the box and press update.</h3>
       <input id="todotext" class="todolist" type="text" placeholder="Enter a Task"/>
       <textarea id="descriptionText" class="todolist" placeholder="Description or notes about the task"></textarea>
       <button id="todobutton" class="todolist" type="submit">Submit Task</button>
@@ -133,7 +133,9 @@
           const description=toDoList[i][2]
           let newTask=document.createElement('div')
           newTask.classList.add('task-style')
-          newTask.innerHTML=`<button onclick="deleteItem(${id})" class="deleteButton">X</button><h2 class="task">${item}</h2><p class="notes">${description}</p>`;
+          newTask.innerHTML=`<button onclick="deleteItem(${id})" class="deleteButton">X</button>
+          <button onclick="updateItem(${id})" class="updateButton">Update</button>
+          <h2 class="task">${item}</h2><p class="notes">${description}</p>`;
           document.getElementById('displayedList').append(newTask);
         }
       };
@@ -141,6 +143,18 @@
         axios.delete(`http://localhost:4000/api/todo/${id}`)
         .then(res => {
           alert("Congratulations on Finishing your Task!")
+          createToDoItem(res.data);
+        })
+      };
+
+      function updateItem(id) {
+        let data = document.getElementById("descriptionText").value
+        let update = {
+          data
+        };
+        axios.put(`http://localhost:4000/api/todo/${id}`, update)
+        .then(res => {
+          alert('Item Updated')
           createToDoItem(res.data);
         })
       };

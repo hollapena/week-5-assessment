@@ -74,10 +74,15 @@ body{
     width:300px;
     display:grid;
     grid-template-areas:
-    "delete task notes";
+    "delete task notes update";
     justify-items:start;
     align-items:center;
-    margin-right:75px;
+    margin-right:200px;
+}
+
+.updateButton{
+    grid-area:update;
+    height:25px;
 }
 
 .task{
@@ -104,6 +109,13 @@ body{
     border-top-right-radius:20px;
     border-top-left-radius:20px;
     padding-top:10px;
+}
+
+hr{
+    border-color:black;
+}
+#todosub{
+    text-align: center;
 }
 
 #todotext{
