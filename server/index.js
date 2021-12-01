@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require('path')
 const cors = require("cors");
 
 const app = express();
@@ -77,4 +78,14 @@ app.put("/api/todo/:id", (req, res) => {
     res.status(200).send(toDoList)
 });
 
-app.listen(4000, () => console.log("Server running on 4000"));
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/index.html"))
+})
+
+app.get('/css', function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/index.css"))
+})
+
+const port = process.env.PORT || 4321
+
+app.listen(port, () => console.log(`Server running on ${port}`));
